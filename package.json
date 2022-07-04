@@ -1,0 +1,21 @@
+{
+  "name": "dongbang-presence",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/app.ts"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "ip6addr": "^0.2.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/ip6addr": "^0.2.3",
+    "@types/node": "^18.0.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  }
+}
