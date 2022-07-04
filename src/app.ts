@@ -1,10 +1,11 @@
-import express, {Response} from "express";
+import express from "express";
 import cors from "cors";
 
 import {getMacAddress} from "./wifi";
 import {parseIpAddress} from "./parser";
-import {FlowError, InternalError} from "./error";
+import {FlowError} from "./error";
 import {Poller} from "./poller";
+import {checkRegistered} from "./api";
 
 const app = express();
 app.use(cors({
@@ -34,7 +35,9 @@ app.get<{}, ResponseBody>("/dongbang", async (req, res) => {
         const ip = parseIpAddress(req.ip);
         const macAddress = await getMacAddress(ip);
         
-        return res.json({...baseResponse, macAddress});
+        if (!await checkRegistered(macAddress)) {
+            return res.json({...baseResponse, macAddress});
+        }
     } catch (e) {
         if (e instanceof FlowError) {
             return res.json(baseResponse);
@@ -47,6 +50,7 @@ app.get<{}, ResponseBody>("/dongbang", async (req, res) => {
                 : "UNKNOWN_ERROR"
         });
     }
+    return res.json(baseResponse);
 });
 
 const poller = new Poller();

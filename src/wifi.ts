@@ -43,7 +43,7 @@ const fetchWiFiAPI = async (): Promise<AxiosResponse> => {
                 headers: {
                     Referer: "http://192.168.0.1/netinfo/laninfo/iux.cgi"
                 },
-                timeout: 3000,
+                timeout: 5000,
             }
         );
     } catch (e) {

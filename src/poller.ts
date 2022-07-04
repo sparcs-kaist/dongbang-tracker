@@ -1,4 +1,5 @@
 import {ConnectType, getConnectedDevices} from "./wifi";
+import {changeStatus} from "./api";
 
 export class Poller {
     interval: number;
@@ -28,6 +29,8 @@ export class Poller {
         
         entered.forEach(mac => console.log(`Entered: ${mac}`));
         exited.forEach(mac => console.log(`Exited: ${mac}`));
+        
+        changeStatus({entered, exited}).catch(console.error);
     }
     
     private async getDeviceSet(): Promise<Set<string>> {
