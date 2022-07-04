@@ -1,13 +1,13 @@
 import axios, {AxiosResponse} from "axios";
 import {FlowError, FlowErrorType, InternalError, InternalErrorType} from "./error";
 
-enum ConnectType {
+export enum ConnectType {
     WIRE = "S_WIRE",
     WIRELESS = "S_WIRELESS",
     WIRE_UNKNOWN = "S_WIRE_UNKNOWN",
 }
 
-interface ConnectedDevice {
+export interface ConnectedDevice {
     connect_type: ConnectType,
     dynamic: "0" | "1",
     hostname: string,
@@ -43,15 +43,16 @@ const fetchWiFiAPI = async (): Promise<AxiosResponse> => {
                 headers: {
                     Referer: "http://192.168.0.1/netinfo/laninfo/iux.cgi"
                 },
-                timeout: 1000,
+                timeout: 3000,
             }
         );
-    } catch {
+    } catch (e) {
+        console.error(e)
         throw new InternalError(InternalErrorType.WIFI_REQUEST_FAILED);
     }
 }
 
-const getConnectedDevices = async (): Promise<ConnectedDevice[]> => {
+export const getConnectedDevices = async (): Promise<ConnectedDevice[]> => {
     const res = await fetchWiFiAPI();
     if (!Array.isArray(res.data?.addlist)) throw new Error("Invalid response");
     

@@ -4,6 +4,7 @@ import cors from "cors";
 import {getMacAddress} from "./wifi";
 import {parseIpAddress} from "./parser";
 import {FlowError, InternalError} from "./error";
+import {Poller} from "./poller";
 
 const app = express();
 app.use(cors({
@@ -48,6 +49,8 @@ app.get<{}, ResponseBody>("/dongbang", async (req, res) => {
     }
 });
 
+const poller = new Poller();
+poller.start();
 
 app.listen(port, () =>
     console.log(`listening on port ${port}`)
