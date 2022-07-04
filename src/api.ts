@@ -11,8 +11,10 @@ const instance = axios.create({
     // headers: {"X-API-Key": process.env.API_KEY || "dongbang"},
 });
 
-export const changeStatus = async (query: ChangeStatusQuery) => {
-    await instance.post("status", query);
+export const changeStatus = async ({entered, exited}: ChangeStatusQuery) => {
+    if (entered.length + exited.length > 0) {
+        await instance.post("status", {entered, exited});
+    }
 }
 
 export const checkRegistered = async (macAddress: string): Promise<boolean> => {
