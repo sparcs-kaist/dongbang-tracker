@@ -30,7 +30,7 @@ type ResponseBody = BaseResponse | SuccessResponse | ErrorResponse;
 
 const baseResponse: BaseResponse = {hello: "dongbang"};
 
-app.get<{}, ResponseBody>("/dongbang", async (req, res) => {
+app.get<ResponseBody>("/dongbang", async (req, res) => {
     try {
         const ip = parseIpAddress(req.ip);
         const macAddress = await getMacAddress(ip);
