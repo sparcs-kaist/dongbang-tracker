@@ -7,9 +7,13 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "ip6addr": "^0.2.5"
+    "ip6addr": "^0.2.5",
+    "reflect-metadata": "^0.1.13",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
