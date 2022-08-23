@@ -16,10 +16,12 @@ export const initTracker = (socket: Socket) => {
         .catch(console.error);
     
     socket.on("connect", () => {
+        console.log("Connected to server")
         timer = setInterval(track, config.interval);
     });
     
     socket.on("disconnect", () => {
+        console.log("Disconnected from server")
         clearInterval(timer);
         timer = null;
     });

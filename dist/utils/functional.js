@@ -10,9 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stringifyError = exports.fetchOne = exports.respond = exports.error = exports.pipe = void 0;
+const error_1 = require("../error");
 const pipe = (initialValue) => __awaiter(void 0, void 0, void 0, function* () { return initialValue; });
 exports.pipe = pipe;
-const error = (message) => { throw new Error(message); };
+const error = (message) => { throw new error_1.LogError(message); };
 exports.error = error;
 const respond = (res, field) => (data) => res.json({ hello: "dongbang", [field]: data });
 exports.respond = respond;

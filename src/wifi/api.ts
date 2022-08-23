@@ -2,6 +2,7 @@ import axios from "axios";
 import { Device } from "../schema";
 import { parse } from "./parser";
 import { config } from "../core/config";
+import { LogError } from "../error";
 
 export const fetchLanInfo = (): Promise<Device[]> => {
     return axios.get(
@@ -18,6 +19,6 @@ export const fetchLanInfo = (): Promise<Device[]> => {
         },
     )
         .then(res => Promise.resolve(parse(res.data)))
-        .catch(() => Promise.reject(new Error("WiFi request failed")));
+        .catch(() => Promise.reject(new LogError("WiFi request failed")));
 };
 

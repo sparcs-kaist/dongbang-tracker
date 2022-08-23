@@ -15,9 +15,11 @@ const initTracker = (socket) => {
         .then(connection_1.sendCurrentDevices)
         .catch(console.error);
     socket.on("connect", () => {
+        console.log("Connected to server");
         timer = setInterval(track, config_1.config.interval);
     });
     socket.on("disconnect", () => {
+        console.log("Disconnected from server");
         clearInterval(timer);
         timer = null;
     });

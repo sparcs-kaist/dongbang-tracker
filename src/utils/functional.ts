@@ -1,8 +1,9 @@
 import { Response } from "express";
+import { LogError } from "../error";
 
 export const pipe = async <T>(initialValue?: T) => initialValue;
 
-export const error = (message: string) => { throw new Error(message); };
+export const error = (message: string) => { throw new LogError(message); };
 
 export const respond = (res: Response, field: string) =>
     <T>(data: T) => res.json({ hello: "dongbang", [field]: data });

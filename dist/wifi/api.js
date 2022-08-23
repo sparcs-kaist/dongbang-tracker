@@ -7,6 +7,7 @@ exports.fetchLanInfo = void 0;
 const axios_1 = __importDefault(require("axios"));
 const parser_1 = require("./parser");
 const config_1 = require("../core/config");
+const error_1 = require("../error");
 const fetchLanInfo = () => {
     return axios_1.default.get("http://192.168.0.1/cgi/iux_get.cgi?tmenu=netinfo&smenu=laninfo&act=status", {
         auth: {
@@ -19,6 +20,6 @@ const fetchLanInfo = () => {
         timeout: config_1.config.interval,
     })
         .then(res => Promise.resolve((0, parser_1.parse)(res.data)))
-        .catch(() => Promise.reject(new Error("WiFi request failed")));
+        .catch(() => Promise.reject(new error_1.LogError("WiFi request failed")));
 };
 exports.fetchLanInfo = fetchLanInfo;
