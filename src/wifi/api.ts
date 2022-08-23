@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GlobalError } from "../error";
 import { Device } from "../schema";
 import { parse } from "./parser";
 
@@ -18,6 +17,6 @@ export const fetchLanInfo = (): Promise<Device[]> => {
         },
     )
         .then(res => Promise.resolve(parse(res.data)))
-        .catch(() => Promise.reject(new GlobalError("WiFi request failed")));
+        .catch(() => Promise.reject(new Error("WiFi request failed")));
 };
 

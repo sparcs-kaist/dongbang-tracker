@@ -1,10 +1,18 @@
 import ip6addr from "ip6addr";
-import { GlobalError } from "../error";
+import { fetchLanInfo } from "../wifi/api";
+import { Device } from "../schema";
 
-export const parseIpAddress = (ip: string): string => {
+const format = (ip: string): string => {
     try {
         return ip6addr.parse(ip).toString({ format: "v4" });
     } catch {
-        throw new GlobalError("Invalid IP address");
+        return "";
     }
 };
+
+export const filterByIp = (ip: string) =>
+    (devices: Device[]) => devices.filter(
+        device => device.ipaddr === format(ip),
+    );
+    
+
