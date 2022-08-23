@@ -18,6 +18,7 @@ const fetchLanInfo = () => {
             Referer: "http://192.168.0.1/netinfo/laninfo/iux.cgi",
         },
         timeout: config_1.config.interval,
+        insecureHTTPParser: true,
     })
         .then(res => Promise.resolve((0, parser_1.parse)(res.data)))
         .catch(() => Promise.reject(new error_1.LogError("WiFi request failed")));
