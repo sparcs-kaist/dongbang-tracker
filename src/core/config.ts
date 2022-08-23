@@ -12,6 +12,12 @@ class Config {
     
     @Key("CONNECTION_TOKEN")
     public token: string;
+    
+    @Key("TRACKER_INTERVAL")
+    public interval: number;
+    
+    @Key("TRACKER_PORT")
+    public port: number;
 }
 
 export const config = loadSync(Config);

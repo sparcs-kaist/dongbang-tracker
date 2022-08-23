@@ -22,4 +22,10 @@ __decorate([
 __decorate([
     (0, typenv_1.Key)("CONNECTION_TOKEN")
 ], Config.prototype, "token", void 0);
+__decorate([
+    (0, typenv_1.Key)("TRACKER_INTERVAL")
+], Config.prototype, "interval", void 0);
+__decorate([
+    (0, typenv_1.Key)("TRACKER_PORT")
+], Config.prototype, "port", void 0);
 exports.config = (0, typenv_1.loadSync)(Config);

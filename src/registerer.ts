@@ -4,6 +4,7 @@ import { fetchLanInfo } from "./wifi/api";
 import { filterDevices, hashDevices } from "./utils/devices";
 import { filterByIp } from "./utils/ip";
 import { fetchOne, pipe, respond, stringifyError } from "./utils/functional";
+import { config } from "./core/config";
 
 const app = express();
 
@@ -23,5 +24,8 @@ app.use((err, req, res, _) => pipe(err)
 );
 
 export const initRegisterer = () => {
-    app.listen(3000, () => console.log("Registerer listening on port 3000"));
+    app.listen(
+        config.port,
+        () => console.log(`Registerer listening on port ${config.port}`),
+    );
 };

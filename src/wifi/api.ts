@@ -14,7 +14,7 @@ export const fetchLanInfo = (): Promise<Device[]> => {
             headers: {
                 Referer: "http://192.168.0.1/netinfo/laninfo/iux.cgi",
             },
-            timeout: 5000,
+            timeout: config.interval,
         },
     )
         .then(res => Promise.resolve(parse(res.data)))

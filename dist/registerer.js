@@ -9,6 +9,7 @@ const api_1 = require("./wifi/api");
 const devices_1 = require("./utils/devices");
 const ip_1 = require("./utils/ip");
 const functional_1 = require("./utils/functional");
+const config_1 = require("./core/config");
 const app = (0, express_1.default)();
 app.get("/dongbang", (req, res, next) => (0, functional_1.pipe)()
     .then(api_1.fetchLanInfo)
@@ -22,6 +23,6 @@ app.use((err, req, res, _) => (0, functional_1.pipe)(err)
     .then(functional_1.stringifyError)
     .then((0, functional_1.respond)(res, "error")));
 const initRegisterer = () => {
-    app.listen(3000, () => console.log("Registerer listening on port 3000"));
+    app.listen(config_1.config.port, () => console.log(`Registerer listening on port ${config_1.config.port}`));
 };
 exports.initRegisterer = initRegisterer;

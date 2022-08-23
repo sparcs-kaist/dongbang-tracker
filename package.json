@@ -3,7 +3,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node src/init.ts",
-    "build": "tsc"
+    "build": "rm -r ./dist && tsc"
   },
   "dependencies": {
     "axios": "^0.27.2",

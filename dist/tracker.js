@@ -5,6 +5,7 @@ const api_1 = require("./wifi/api");
 const connection_1 = require("./connection");
 const devices_1 = require("./utils/devices");
 const functional_1 = require("./utils/functional");
+const config_1 = require("./core/config");
 const initTracker = (socket) => {
     let timer = null;
     const track = () => (0, functional_1.pipe)()
@@ -14,7 +15,7 @@ const initTracker = (socket) => {
         .then(connection_1.sendCurrentDevices)
         .catch(console.error);
     socket.on("connect", () => {
-        timer = setInterval(track, 5000);
+        timer = setInterval(track, config_1.config.interval);
     });
     socket.on("disconnect", () => {
         clearInterval(timer);
