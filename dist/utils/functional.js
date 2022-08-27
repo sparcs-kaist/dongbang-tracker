@@ -15,7 +15,7 @@ const pipe = (initialValue) => __awaiter(void 0, void 0, void 0, function* () { 
 exports.pipe = pipe;
 const error = (message) => { throw new error_1.LogError(message); };
 exports.error = error;
-const respond = (res, field) => (data) => res.json({ hello: "dongbang", [field]: data });
+const respond = (res, field) => (data) => res.json({ [field]: data });
 exports.respond = respond;
 const fetchOne = (array) => array.length === 1
     ? array[0]

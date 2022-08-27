@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>DONGBANG</title>
+    <style>
+        :root {
+
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding-inline: max(15px, calc(50vw - 768px / 2));
+            min-height: 100%;
+            background-color: rgb(250, 250, 250);
+        }
+    </style>
+</head>
+<body>
+<h1 id="loader">Loading...</h1>
+
+<script>
+    
+    const loader = document.getElementById("loader");
+    
+    const registerDevice = async () => {
+        try {
+            const res = await fetch("http://{{ ip }}:{{ port }}/register/{{ token }}");
+            const data = await res.json();
+            loader.innerText = data.result;
+            window.close();
+            // loader.remove();
+        } catch {
+            loader.innerText = "error";
+        }
+    };
+    
+    registerDevice();
+</script>
+</body>
+</html>
