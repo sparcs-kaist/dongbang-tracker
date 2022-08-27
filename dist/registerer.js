@@ -11,6 +11,9 @@ const ip_1 = require("./utils/ip");
 const functional_1 = require("./utils/functional");
 const config_1 = require("./core/config");
 const app = (0, express_1.default)();
+app.get("/", (req, res) => {
+    // render()
+});
 app.get("/dongbang", (req, res, next) => (0, functional_1.pipe)()
     .then(api_1.fetchLanInfo)
     .then(devices_1.filterDevices)
