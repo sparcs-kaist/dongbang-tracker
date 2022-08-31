@@ -4,8 +4,8 @@ import { ConnectType, Device, DynamicType } from "../schema";
 
 export const filterDevices = (devices: Device[]): Device[] =>
     devices.filter(device =>
-        device.connect_type !== ConnectType.WIRE
-        && device.dynamic !== DynamicType.STATIC,
+        device.connect_type === ConnectType.WIRELESS
+        && device.dynamic === DynamicType.DYNAMIC,
     );
 
 export const hashDevices = (devices: Device[]): string[] =>
